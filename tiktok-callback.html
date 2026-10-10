@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Autorização recebida · Guia de Compras Social</title>
+<style>
+  body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color:#1a1a2e; background:#f4f7fb; line-height:1.6; }
+  main { max-width:760px; margin:0 auto; padding:40px 20px; }
+  h1 { color:#00034c; }
+  code { display:block; word-break:break-all; background:#fff; border:1px solid #dfe8f5; border-radius:10px; padding:14px; margin:12px 0; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Autorização recebida</h1>
+  <p>Esta página é o retorno da autorização do TikTok para a ferramenta interna do Guia. Copie o código abaixo e cole no terminal do publicador. Nada é enviado a lugar nenhum por esta página.</p>
+  <code id="codigo">(sem código na URL)</code>
+  <script>
+    const p = new URLSearchParams(location.search);
+    const c = p.get("code"); const s = p.get("state"); const e = p.get("error");
+    document.getElementById("codigo").textContent = e ? ("erro: " + e + " " + (p.get("error_description") || "")) : (c ? ("code=" + c + (s ? "\nstate=" + s : "")) : "(sem código na URL)");
+  </script>
+</main>
+</body>
+</html>
